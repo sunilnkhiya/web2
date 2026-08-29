@@ -5,7 +5,7 @@
 // ============================================================
 
 const DEFAULT_FIREBASE_CONFIG = {
-    apiKey: "AIzaSyCWCfT2AIdqjx0gqizLCIzavcNo4DUS-5Q",
+    apiKey: "AIzaSyBL0ZveAfL7l6I8C7dO9B3-SHL-QXy4Mrk",
     authDomain: "web2-ec085.firebaseapp.com",
     databaseURL: "https://web2-ec085-default-rtdb.firebaseio.com/",
     projectId: "web2-ec085",
