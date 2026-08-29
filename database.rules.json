@@ -1,0 +1,88 @@
+{
+  "rules": {
+    "a7satta": {
+      ".read": true,
+      ".write": "auth != null && auth.token.admin == true",
+      "games_primary": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "games_secondary": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "featured": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "chart1_headers": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "chart1_data": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "chart2_headers": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "chart2_data": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "chart3_headers": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "chart3_data": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "fullchart_headers": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "fullchart_data": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "prev_fullchart_headers": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "prev_fullchart_data": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "year_chart_headers": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "year_chart_data": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "marquee": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "hindi_text": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "ad_schedule": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "ad_content": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      },
+      "disclaimer": {
+        ".read": true,
+        ".write": "auth != null && auth.token.admin == true"
+      }
+    }
+  }
+}

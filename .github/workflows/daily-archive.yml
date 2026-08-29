@@ -1,0 +1,39 @@
+name: Daily Result Archiving Workflow
+
+on:
+  schedule:
+    # Runs at 21:45 UTC every day, which corresponds to 03:15 AM IST (Asia/Kolkata) the next day
+    - cron: '45 21 * * *'
+  workflow_dispatch:
+    inputs:
+      custom_date:
+        description: 'Optional target archive date (DD-MM-YYYY or YYYY-MM-DD)'
+        required: false
+        default: ''
+
+jobs:
+  archive:
+    name: Archive Daily Results
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Firebase Admin SDK
+        run: npm install firebase-admin
+
+      - name: Run Daily Archive Script
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -n "${{ github.event.inputs.custom_date }}" ]; then
+            node scripts/archive-daily.js "${{ github.event.inputs.custom_date }}"
+          else
+            node scripts/archive-daily.js
+          fi

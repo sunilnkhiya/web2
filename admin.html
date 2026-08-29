@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>A7 Satta - Admin Panel</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+<div class="admin-wrapper">
+
+    <!-- === ADMIN HEADER === -->
+    <div class="admin-header">
+        <h2>⚙️ A7 SATTA - Admin Panel</h2>
+        <div class="admin-nav">
+            <a href="index.html" target="_blank">🌐 View Site</a>
+            <a href="chart.html" target="_blank">📊 View Chart</a>
+            <button class="btn-logout" onclick="logout()">🚪 Logout</button>
+        </div>
+    </div>
+
+    <!-- === ADMIN BODY === -->
+    <div class="admin-body">
+
+        <!-- Dashboard Stats -->
+        <div class="admin-cards">
+            <div class="admin-card" onclick="switchTab('results')">
+                <div class="card-icon">🎮</div>
+                <div class="card-title">Total Games</div>
+                <div class="card-value" id="stat-total-games">0</div>
+            </div>
+            <div class="admin-card" onclick="switchTab('results')">
+                <div class="card-icon">📋</div>
+                <div class="card-title">Primary Table</div>
+                <div class="card-value" id="stat-primary-games">0</div>
+            </div>
+            <div class="admin-card" onclick="switchTab('results')">
+                <div class="card-icon">📑</div>
+                <div class="card-title">Secondary Table</div>
+                <div class="card-value" id="stat-secondary-games">0</div>
+            </div>
+            <div class="admin-card" onclick="switchTab('charts')">
+                <div class="card-icon">📈</div>
+                <div class="card-title">Monthly Charts</div>
+                <div class="card-value">5</div>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="results" onclick="switchTab('results')">🎯 Game Results</button>
+            <button class="admin-tab" data-tab="featured" onclick="switchTab('featured')">⭐ Featured Result</button>
+            <button class="admin-tab" data-tab="charts" onclick="switchTab('charts')">📊 Home Charts</button>
+            <button class="admin-tab" data-tab="fullcharts" onclick="switchTab('fullcharts')">📋 Full Charts</button>
+            <button class="admin-tab" data-tab="yearchart" onclick="switchTab('yearchart')">📅 Year Chart 2025-26</button>
+            <button class="admin-tab" data-tab="content" onclick="switchTab('content')">📝 Content</button>
+            <button class="admin-tab" data-tab="settings" onclick="switchTab('settings')">⚙️ Settings</button>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- TAB: GAME RESULTS -->
+        <!-- ============================================ -->
+        <div class="tab-content active" id="tab-results">
+            <div class="admin-section">
+                <h3>Primary Results Table <span class="section-badge">Click any cell to edit</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">These are the main games shown on the homepage. Click any cell to edit it inline. Press Enter to save, Escape to cancel.</p>
+                <div class="table-scroll" id="admin-primary-table"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Secondary Results Table <span class="section-badge">Click any cell to edit</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">Additional games shown in the second table on the homepage.</p>
+                <div class="table-scroll" id="admin-secondary-table"></div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- TAB: FEATURED RESULT -->
+        <!-- ============================================ -->
+        <div class="tab-content" id="tab-featured">
+            <div class="admin-section">
+                <h3>Featured Result (DISAWAR Section) <span class="section-badge">Click to edit</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">This is the highlighted game result shown at the top of the homepage with the arrow animation.</p>
+                <div id="admin-featured"></div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- TAB: HOME CHARTS -->
+        <!-- ============================================ -->
+        <div class="tab-content" id="tab-charts">
+            <div class="admin-section">
+                <h3>Chart Table 1 — Green Background <span class="section-badge">Homepage</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">First chart table on homepage (green rows). Click headers to rename games, click cells to edit values.</p>
+                <div class="table-scroll" id="admin-chart1"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Chart Table 2 — Blue Background <span class="section-badge">Homepage</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">Second chart table on homepage (blue rows).</p>
+                <div class="table-scroll" id="admin-chart2"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Chart Table 3 — Orange Background <span class="section-badge">Homepage</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">Third chart table on homepage (orange rows).</p>
+                <div class="table-scroll" id="admin-chart3"></div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- TAB: FULL CHARTS -->
+        <!-- ============================================ -->
+        <div class="tab-content" id="tab-fullcharts">
+            <div class="admin-section">
+                <h3>August 2026 Full Chart <span class="section-badge">Chart Page</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">Complete chart shown on the Chart page with all 20 games. Scroll right to see all columns.</p>
+                <div class="table-scroll" id="admin-fullchart"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>July 2026 Full Chart (Previous Month) <span class="section-badge">Chart Page</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">Previous month's chart data.</p>
+                <div class="table-scroll" id="admin-prev-fullchart"></div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- TAB: YEAR CHART 2025-26 -->
+        <!-- ============================================ -->
+        <div class="tab-content" id="tab-yearchart">
+            <div class="admin-section">
+                <h3>Year Chart Manager 2025-2026 <span class="section-badge">Realtime Firebase Persistence</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:15px;">Manage historical records for 2025 and 2026. Click any cell to edit inline. All changes save directly to Firebase Realtime Database (<code>a7satta/year_chart_data</code>).</p>
+
+                <!-- Year Chart Toolbar -->
+                <div style="margin-bottom:15px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+                    <button type="button" class="btn-admin btn-success" onclick="addYearChartRow()">➕ Add Date Row</button>
+                    <button type="button" class="btn-admin btn-info" onclick="addYearChartColumn()">➕ Add Game Column</button>
+                    <button type="button" class="btn-admin btn-danger" onclick="deleteSelectedYearChartRows()">🗑️ Delete Selected Rows</button>
+                </div>
+
+                <!-- Year Chart Interactive Table -->
+                <div class="table-scroll" id="admin-yearchart-container">
+                    <table class="admin-table">
+                        <thead id="admin-yearchart-head"></thead>
+                        <tbody id="admin-yearchart-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bulk Upload Year Chart Data Section -->
+            <div class="admin-section" style="margin-top:25px;">
+                <h3>📥 Bulk Upload Year Chart Data (CSV Import)</h3>
+                <p style="color:#888;font-size:13px;margin-bottom:15px;">Upload large historical datasets for 2025 & 2026 via CSV. Paste raw CSV content or select a <code>.csv</code> file.</p>
+
+                <div style="background:#0f172a;border:1px solid #334155;padding:15px;border-radius:8px;margin-bottom:15px;">
+                    <strong style="color:#ffd800;display:block;margin-bottom:5px;">Expected CSV Format:</strong>
+                    <code style="color:#94a3b8;font-size:12px;display:block;">
+                        Date, साइबर सिटी, सदर बाजार, ग्वालियर, दिल्ली बाजार, गांधी नगर<br>
+                        01-01-2025,12,45,78,90,34<br>
+                        02-01-2025,34,67,89,10,-
+                    </code>
+                </div>
+
+                <div style="margin-bottom:15px;">
+                    <label style="color:#fff;font-weight:700;margin-bottom:5px;display:block;">Select CSV File:</label>
+                    <input type="file" id="yearchart-csv-file" accept=".csv,.txt" onchange="handleYearChartFileSelect(event)" style="color:#fff;margin-bottom:10px;">
+
+                    <label style="color:#fff;font-weight:700;margin-bottom:5px;display:block;">Or Paste CSV Data:</label>
+                    <textarea class="admin-input" id="yearchart-csv-text" rows="6" placeholder="Paste CSV text here..." style="font-family:monospace;font-size:13px;margin-bottom:15px;"></textarea>
+
+                    <button type="button" class="btn-admin btn-info" onclick="previewYearChartCSV()">🔍 Preview CSV Data</button>
+                </div>
+
+                <!-- CSV Preview Container -->
+                <div id="yearchart-csv-preview-box" style="display:none;background:#1e293b;border:1px solid #334155;border-radius:8px;padding:15px;margin-top:15px;">
+                    <h4 style="color:#ffd800;margin-top:0;">CSV Import Preview</h4>
+                    <div id="yearchart-csv-stats" style="color:#cbd5e1;font-size:13px;margin-bottom:10px;"></div>
+                    <div class="table-scroll" id="yearchart-csv-preview-table" style="max-height:300px;margin-bottom:15px;"></div>
+
+                    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                        <button type="button" class="btn-admin btn-success" onclick="importYearChartData('merge')">🔀 Merge with Existing Year Chart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- TAB: CONTENT -->
+        <!-- ============================================ -->
+        <div class="tab-content" id="tab-content">
+            <div class="admin-section">
+                <h3>TOP GAME NAMES <span class="section-badge">Homepage Display Titles</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">Edit the visible display titles of games shown in the homepage results table. Result values, timings, and internal IDs remain 100% unchanged.</p>
+                <div id="admin-top-game-names"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Marquee Text <span class="section-badge">Scrolling Banner</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">The scrolling text shown at the top of every page.</p>
+                <div id="admin-marquee"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Hindi Announcement Text <span class="section-badge">Below Clock</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">The Hindi text shown below the live clock on the homepage.</p>
+                <div id="admin-hindi"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Advertisement / Khaiwal Box <span class="section-badge">HTML Supported</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">The advertisement box shown on the homepage. You can use HTML tags for formatting.</p>
+                <div id="admin-ad"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>Disclaimer Text <span class="section-badge">Footer</span></h3>
+                <p style="color:#888;font-size:13px;margin-bottom:10px;">The disclaimer text shown at the bottom of every page.</p>
+                <div id="admin-disclaimer"></div>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- TAB: SETTINGS (PASSKEY PROTECTED) -->
+        <!-- ============================================ -->
+        <div class="tab-content" id="tab-settings">
+            <!-- Lock Screen Gate -->
+            <div id="settings-lock-screen" class="admin-section" style="max-width:550px;margin:20px auto;text-align:center;padding:35px 25px;">
+                <div style="font-size:48px;margin-bottom:10px;">🔐</div>
+                <h3 style="color:#0f172a;font-size:22px;font-weight:900;margin-bottom:10px;border-bottom:none;padding:0;display:block;text-align:center;">Settings Security Gate</h3>
+                <p style="color:#64748b;font-size:14px;margin-bottom:20px;line-height:1.5;">This section contains sensitive cloud database credentials, admin login passwords, and system reset tools. Please enter your security passkey to unlock.</p>
+                
+                <div style="margin-bottom:15px;">
+                    <input type="password" id="settings-passkey-input" class="admin-input" placeholder="Enter Security Passkey" style="font-size:16px;text-align:center;padding:12px;letter-spacing:2px;" onkeypress="if(event.key==='Enter') verifySettingsPasskey()">
+                </div>
+                
+                <button class="btn-admin" onclick="verifySettingsPasskey()" style="padding:12px 35px;font-size:15px;font-weight:900;width:100%;">
+                    🔓 Unlock Settings Section
+                </button>
+            </div>
+
+            <!-- Unlocked Settings Content -->
+            <div id="settings-unlocked-content" style="display:none;">
+                <div class="admin-section">
+                    <h3>Firebase Realtime Sync <span class="section-badge">Cloud Database</span></h3>
+                    <p style="color:#64748b;font-size:13px;margin-bottom:10px;">Connect Firebase Realtime Database for live cross-client synchronization. All result updates by admin will instantly sync to all public visitors in real-time!</p>
+                    <div id="admin-firebase"></div>
+                </div>
+
+                <div class="admin-section">
+                    <h3>Login Credentials <span class="section-badge">Security</span></h3>
+                    <p style="color:#64748b;font-size:13px;margin-bottom:10px;">Change your admin login username and password.</p>
+                    <div id="admin-credentials"></div>
+                </div>
+
+                <div class="admin-section">
+                    <h3>Reset All Data <span class="section-badge">⚠️ Danger Zone</span></h3>
+                    <p style="color:#64748b;font-size:13px;margin-bottom:10px;">This will reset ALL data back to the original defaults. This cannot be undone.</p>
+                    <button class="btn-admin btn-danger" onclick="resetData()" style="padding:12px 30px;font-size:14px;">
+                        🗑️ Reset All Data to Defaults
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /admin-body -->
+
+</div><!-- /admin-wrapper -->
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="js/env.js?v=3"></script>
+<script src="js/data.js?v=3"></script>
+<script src="js/firebase-data.js?v=3"></script>
+<script src="js/admin.js?v=3"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        initAdminPage();
+    });
+</script>
+</body>
+</html>

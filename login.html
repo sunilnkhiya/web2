@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>A7 Satta Login: Customer Login</title>
+    <meta name="description" content="A7 Satta - Login to update the game result, A7 Satta login number.">
+    <meta name="keywords" content="A7 satta, Satta King, Satta login">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+<!-- === TOP NAVIGATION === -->
+<section class="topboxnew">
+    <div class="container-fluid">
+        <div class="col-md-12 nopadding">
+            <div class="newnav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="chart.html">CHART</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                    <li><a href="login.html" class="active">LOGIN</a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="text_slide">
+                <marquee id="marquee-text" onMouseOver="this.stop();" onMouseOut="this.start();"></marquee>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === LOGO === -->
+<section class="sattalogo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2><a href="index.html" class="blink">A7 SATTA</a></h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === LOGIN FORM === -->
+<section class="callbox">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="loginhead text-center">Login</p>
+                <form id="login-form">
+                    <p class="sattname text-center">Sign in to A7 SATTA</p>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <div id="login-error" style="display:none;background:#ff4444;color:#fff;padding:10px;border-radius:8px;text-align:center;margin-bottom:15px;font-weight:700;"></div>
+                            <div class="form-wrapper">
+                                <input type="email" name="username" id="username" placeholder="Email Address" class="form-control" required>
+                            </div>
+                            <div class="form-wrapper">
+                                <input type="password" name="password" id="user_pass" placeholder="Password" class="form-control" required>
+                            </div>
+                            <div class="form-wrapper text-center">
+                                <input type="submit" class="formbut btn btn-primary" value="LOGIN">
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </form>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === REFRESH BUTTON === -->
+<a href="index.html" class="refresh-btn" aria-label="Refresh">
+    <div style="background:linear-gradient(135deg,#ffd800,#ff6600);padding:8px 16px;border-radius:10px;color:#000;font-weight:900;font-size:13px;">
+        🔄 REFRESH
+    </div>
+</a>
+
+<!-- === RECORD CHART HEADER === -->
+<section class="octoberresultchart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>SATTA RECORD CHART</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === RECORD CHART TABLE === -->
+<section class="tabel3">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 nopadding">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody id="record-chart-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === FOOTER === -->
+<section class="somelinks2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <strong>@ 2026 A7 SATTA All Rights Reserved</strong>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === DISCLAIMER === -->
+<section class="somelinks">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p id="disclaimer-text" style="color:#ffd800;font-weight:700"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="js/env.js"></script>
+<script src="js/data.js"></script>
+<script src="js/firebase-data.js"></script>
+<script src="js/app.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        initLoginPage();
+    });
+</script>
+</body>
+</html>
