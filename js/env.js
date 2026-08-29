@@ -11,7 +11,7 @@ const ENV_CONFIG = {
     WHATSAPP_URL: "https://wa.me/message/WTOZYC4GBMWNC1",
 
     // REAL NEW Firebase Web App Configuration (web2-ec085)
-    VITE_FIREBASE_API_KEY: "AIzaSyCWCfT2AIdqjx0gqizLCIzavcNo4DUS-5Q",
+    VITE_FIREBASE_API_KEY: "AIzaSyBL0ZveAfL7l6I8C7dO9B3-SHL-QXy4Mrk",
     VITE_FIREBASE_AUTH_DOMAIN: "web2-ec085.firebaseapp.com",
     VITE_FIREBASE_PROJECT_ID: "web2-ec085",
     VITE_FIREBASE_STORAGE_BUCKET: "web2-ec085.firebasestorage.app",
@@ -20,7 +20,7 @@ const ENV_CONFIG = {
     VITE_FIREBASE_DATABASE_URL: "https://web2-ec085-default-rtdb.firebaseio.com/",
 
     // Compatibility Mappings
-    FIREBASE_API_KEY: "AIzaSyCWCfT2AIdqjx0gqizLCIzavcNo4DUS-5Q",
+    FIREBASE_API_KEY: "AIzaSyBL0ZveAfL7l6I8C7dO9B3-SHL-QXy4Mrk",
     FIREBASE_DATABASE_URL: "https://web2-ec085-default-rtdb.firebaseio.com/",
     FIREBASE_PROJECT_ID: "web2-ec085",
     FIREBASE_AUTH_DOMAIN: "web2-ec085.firebaseapp.com",
