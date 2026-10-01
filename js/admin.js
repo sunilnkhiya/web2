@@ -1303,6 +1303,66 @@ function resetData(btnEl) {
     setElementLoading(btnEl, false);
 }
 
+// Dynamic Month Headings for Admin Full Charts
+function updateAdminFullChartHeadings() {
+    var months = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    var now = new Date();
+    var curYear = now.getFullYear();
+    var curMonthIdx = now.getMonth();
+
+    try {
+        var formatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Asia/Kolkata',
+            year: 'numeric',
+            month: 'numeric'
+        });
+        var parts = formatter.formatToParts(now);
+        parts.forEach(function(p) {
+            if (p.type === 'year') curYear = parseInt(p.value, 10);
+            if (p.type === 'month') curMonthIdx = parseInt(p.value, 10) - 1;
+        });
+    } catch (e) {
+        console.warn('[ADMIN HEADINGS] Intl.DateTimeFormat error:', e);
+    }
+
+    var currentMonthName = months[curMonthIdx];
+    var currentYear = curYear;
+
+    var prevMonthIdx = curMonthIdx - 1;
+    var prevYear = currentYear;
+    if (prevMonthIdx < 0) {
+        prevMonthIdx = 11;
+        prevYear = currentYear - 1;
+    }
+    var prevMonthName = months[prevMonthIdx];
+
+    var fullchartEl = document.getElementById('admin-fullchart');
+    if (fullchartEl) {
+        var section1 = fullchartEl.closest ? fullchartEl.closest('.admin-section') : fullchartEl.parentElement;
+        if (section1) {
+            var h3_1 = section1.querySelector('h3');
+            if (h3_1) {
+                h3_1.innerHTML = currentMonthName + ' ' + currentYear + ' Full Chart <span class="section-badge">Chart Page</span>';
+            }
+        }
+    }
+
+    var prevFullchartEl = document.getElementById('admin-prev-fullchart');
+    if (prevFullchartEl) {
+        var section2 = prevFullchartEl.closest ? prevFullchartEl.closest('.admin-section') : prevFullchartEl.parentElement;
+        if (section2) {
+            var h3_2 = section2.querySelector('h3');
+            if (h3_2) {
+                h3_2.innerHTML = prevMonthName + ' ' + prevYear + ' Full Chart (Previous Month) <span class="section-badge">Chart Page</span>';
+            }
+        }
+    }
+}
+
 // ============================================================
 // Initialize Admin Page
 // ============================================================
@@ -1330,6 +1390,7 @@ function initAdminPage() {
         renderAdminChart('admin-chart3', 'chart3_headers', 'chart3_data', 2);
         renderAdminChart('admin-fullchart', 'fullchart_headers', 'fullchart_data', 3);
         renderAdminChart('admin-prev-fullchart', 'prev_fullchart_headers', 'prev_fullchart_data', 4);
+        updateAdminFullChartHeadings();
         renderAdminYearChart();
         renderAdminTopGameNames();
         renderAdminMarquee();
