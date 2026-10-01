@@ -169,14 +169,23 @@ function listenToFirebaseUpdates() {
 
     const ref = firebaseDb.ref('a7satta');
     ref.on('value', function(snapshot) {
-        const val = snapshot.val();
-        if (!val) {
-            console.log('[RESULT FETCH] Database returned empty snapshot.');
-            return;
-        }
-
+        const val = snapshot.val() || {};
         console.log('[RESULT FETCH] Received real-time update from Database (web2-ec085).');
         let hasChanges = false;
+
+        const monthlyChartKeys = ['chart1_data', 'chart2_data', 'chart3_data', 'fullchart_data'];
+
+        monthlyChartKeys.forEach(function(key) {
+            if (!(key in val) || val[key] === undefined || val[key] === null) {
+                const emptyValStr = JSON.stringify([]);
+                const localValStr = localStorage.getItem('a7_' + key);
+
+                if (localValStr !== emptyValStr) {
+                    localStorage.setItem('a7_' + key, emptyValStr);
+                    hasChanges = true;
+                }
+            }
+        });
 
         Object.keys(val).forEach(function(key) {
             const remoteVal = val[key];
