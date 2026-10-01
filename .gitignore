@@ -3,3 +3,8 @@
 node_modules/
 .DS_Store
 service-account.json
+
+# Local chart importer files
+test-*.csv
+*-import.csv
+backups/
